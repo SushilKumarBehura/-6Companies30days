@@ -1,0 +1,14 @@
+class Solution {
+public:
+    bool canArrange(vector<int>& arr, int k) {
+        map<int,int>frequency;
+        for(auto num:arr){
+            frequency[(num%k+k)%k]++;
+        }
+        if(frequency[0]%2!=0) return false;
+        for(int i=1;i<k;i++){
+            if(frequency[i]!=frequency[k-i]) return false;
+        }
+        return true;
+    }
+};
